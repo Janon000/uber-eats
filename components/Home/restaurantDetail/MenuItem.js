@@ -1,7 +1,16 @@
-import { View, Text, StyleSheet, Image, ScrollView, ScrollViewComponent } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  ScrollView,
+  ScrollViewComponent,
+} from "react-native";
 import { Divider } from "react-native-elements";
 import React from "react";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
+import { useDispatch } from "react-redux";
+import { add } from "../../../redux/reducers/cartSlice";
 
 const foods = [
   {
@@ -22,40 +31,18 @@ const foods = [
     price: "$19.29",
     image: "https://i.ytimg.com/vi/BKxGodX9NGg/maxresdefault.jpg",
   },
-  {
-    title: "Tandoori Chicken",
-    description: "Amazing Indian dish with tenderloin chicken",
-    price: "$19.29",
-    image: "https://i.ytimg.com/vi/BKxGodX9NGg/maxresdefault.jpg",
-  },
-  {
-    title: "Tandoori Chicken",
-    description: "Amazing Indian dish with tenderloin chicken",
-    price: "$19.29",
-    image: "https://i.ytimg.com/vi/BKxGodX9NGg/maxresdefault.jpg",
-  },
-  {
-    title: "Tandoori Chicken",
-    description: "Amazing Indian dish with tenderloin chicken",
-    price: "$19.29",
-    image: "https://i.ytimg.com/vi/BKxGodX9NGg/maxresdefault.jpg",
-  },
-  {
-    title: "Tandoori Chicken",
-    description: "Amazing Indian dish with tenderloin chicken",
-    price: "$19.29",
-    image: "https://i.ytimg.com/vi/BKxGodX9NGg/maxresdefault.jpg",
-  },
-  
 ];
 
 function MenuItems() {
+  const dispatch = useDispatch();
+  const selectItem = (item) => dispatch(add(item));
+
   return (
-    <ScrollView showsVerticalScrollIndicator={false} >
+    <ScrollView showsVerticalScrollIndicator={false}>
       {foods.map((food, index) => (
         <View key={index}>
           <View style={styles.menuItemStyle}>
-            
+            <BouncyCheckbox onPress={()=>selectItem(food)}/>
             <FoodInfo food={food} />
             <FoodImage food={food} />
           </View>

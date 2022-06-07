@@ -9,7 +9,9 @@ export default function RestaurantDetail({route, navigation}) {
 
   console.log(`this is...${route.params.name}`)
   return (
-    <View>
+    <View style={{
+     
+    }}>
       <About route={route} />
       <Divider width={1.8} style={{ marginVertical: 20 }} />
       <MenuItems />

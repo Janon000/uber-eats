@@ -4,20 +4,20 @@ import React from "react";
 function ViewCart() {
   return (
     <View style={{
-        flex: 1,
-        alignItems: "center",
-        flexDirection: "row",
-        justifyContent: "center",
-        position: "absolute",
-        bottom: 130,
-        zIndex: 999,
+      flex: 1,
+      alignItems: "center",
+      justifyContent: "center",
+      flexDirection: "row",
+      position: "absolute",
+      bottom: 130,
+      zIndex: 999,
     }}>
       <View
         style={{
           flexDirection: "row",
           justifyContent: "center",
           width: "100%",
-        }}
+            }}
       >
         <TouchableOpacity
           style={{
