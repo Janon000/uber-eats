@@ -5,14 +5,12 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
+import { Provider as ReduxProvider } from "react-redux";
+import { store } from  "./redux/store"
 import Home from "./screens/Home";
 import RestaurantDetail from "./screens/RestaurantDetail";
 import Test from "./screens/Test";
-import { Provider as ReduxProvider } from "react-redux";
-import { store } from  "./redux/store"
-// import OrderCompleted from "./screens/OrderCompleted";
-
-// const store = configureStore();
+import OrderCompleted from "./screens/OrderCompleted";
 
 function RootNavigation() {
   const Stack = createStackNavigator();
@@ -26,8 +24,8 @@ function RootNavigation() {
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Home" screenOptions={screenOptions}>
           <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="RestaurantDetail" component={RestaurantDetail} />
-          {/* <Stack.Screen name="OrderCompleted" component={OrderCompleted} /> */}
+          <Stack.Screen name="RestaurantDetail" component={RestaurantDetail} /> 
+          <Stack.Screen name="OrderCompleted" component={OrderCompleted}  />
         </Stack.Navigator>
       </NavigationContainer>
     </ReduxProvider>
