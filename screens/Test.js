@@ -8,94 +8,18 @@ import {
 } from "react-native";
 import React from "react";
 import MenuItems from "../components/Home/restaurantDetail/MenuItem";
-function Test() {
+import About from "../components/Home/restaurantDetail/About";
+import { Divider } from "react-native-elements";
+import ViewCart from "../components/Home/restaurantDetail/ViewCart";
+
+function Test({ route, navigation }) {
   return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-        backgroundColor: "#eee",
-        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-      }}
-    >
+    <>
+      <About route={route} />
+      <Divider width={1.8} style={{ marginVertical: 20 }} />
       <MenuItems />
-      <ScrollView>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Bessadasdat</Text>
-        <Text>Bessadasdat</Text>
-        <Text>Bessadasdat</Text>
-        <Text>Bessadasdat</Text>
-        <Text>Bessadasdat</Text>
-        <Text>Bessadasdat</Text>
-        <Text>Bessadasdat</Text>
-        <Text>Bessadasdat</Text>
-        <Text>Bessadasdat</Text>
-        <Text>Bessadasdat</Text>
-        <Text>Bessadasdat</Text>
-        <Text>Bessadasdat</Text>
-        <Text>Bessadasdat</Text>
-        <Text>Bessadasdat</Text>
-        <Text>Bessadasdat</Text>
-        <Text>Bessadasdat</Text>
-        <Text>Bessadasdat</Text>
-        <Text>Bessadasdat</Text>
-        <Text>Bessadasdat</Text>
-        <Text>Bessadasdat</Text>
-        <Text>Bessadasdat</Text>
-        <Text>Bessadasdat</Text>
-        <Text>Bessadasdat</Text>
-        <Text>Bessadasdat</Text>
-        <Text>Bessadasdat</Text>
-        <Text>Bessadasdat</Text>
-        <Text>Bessadasdat</Text>
-        <Text>Bessadasdat</Text>
-        <Text>Bessadasdat</Text>
-        <Text>Bessadasdat</Text>
-        <Text>Bessadasdat</Text>
-        <Text>Bessadasdat</Text>
-        <Text>Bessadasdat</Text>
-        <Text>Bessadasdat</Text>
-        <Text>Bessadasdat</Text>
-        <Text>Bessadasdat</Text>
-      </ScrollView>
-    </SafeAreaView>
+      <ViewCart navigation={navigation} restaurantName={route.params.name} />
+    </>
   );
 }
 

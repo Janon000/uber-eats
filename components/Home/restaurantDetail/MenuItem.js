@@ -9,42 +9,42 @@ import {
 import { Divider } from "react-native-elements";
 import React from "react";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { add } from "../../../redux/reducers/cartSlice";
 
-const foods = [
-  {
-    title: "Tandoori Chicken",
-    description: "Amazing Indian dish with tenderloin chicken",
-    price: "$19.29",
-    image: "https://i.ytimg.com/vi/BKxGodX9NGg/maxresdefault.jpg",
-  },
-  {
-    title: "Tandoori Chicken",
-    description: "Amazing Indian dish with tenderloin chicken",
-    price: "$19.29",
-    image: "https://i.ytimg.com/vi/BKxGodX9NGg/maxresdefault.jpg",
-  },
-  {
-    title: "Tandoori Chicken",
-    description: "Amazing Indian dish with tenderloin chicken",
-    price: "$19.29",
-    image: "https://i.ytimg.com/vi/BKxGodX9NGg/maxresdefault.jpg",
-  },
-];
 
-function MenuItems() {
+
+function MenuItems({ restaurantName, foods, hideCheckbox, marginLeft }) {
+  
   const dispatch = useDispatch();
-  const selectItem = (item) => dispatch(add(item));
+  
+  const selectItem = (item, checkboxValue) =>
+    dispatch(
+      add({
+        ...item,
+        restaurantName: restaurantName,
+        checkboxValue: checkboxValue,
+      })
+    );
+
+  const cartItems = useSelector((state) => state.cart.selectedItems.items);
+
+  const isFoodInCart = (food, cartItems) =>
+  Boolean(cartItems.find((item) => item.title === food.title));
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       {foods.map((food, index) => (
         <View key={index}>
           <View style={styles.menuItemStyle}>
-            <BouncyCheckbox onPress={()=>selectItem(food)}/>
+            { hideCheckbox? (<></>) : (<BouncyCheckbox
+              iconStyle={{ borderColor: "lightgray", borderRadius: 0 }}
+              fillColor="green"
+              onPress={(checkboxValue) => selectItem(food, checkboxValue)}
+              isChecked={isFoodInCart(food, cartItems)}
+            />)}
             <FoodInfo food={food} />
-            <FoodImage food={food} />
+            <FoodImage food={food} marginLeft={marginLeft ? marginLeft : 0}/>
           </View>
           <Divider
             width={0.5}
